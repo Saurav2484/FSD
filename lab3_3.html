@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive DOM Manipulation</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 30px;
+            padding: 20px;
+            background-color: #e9ecef;
+            border-radius: 10px;
+            max-width: 650px;
+            margin: auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #444;
+        }
+
+        button {
+            margin: 8px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            background-color: #28a745;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        img {
+            display: block;
+            margin: 25px auto;
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #fff;
+            padding: 12px;
+            margin: 6px 0;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .button-group {
+            text-align: center;
+            margin-top: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="page-title">Explore Dynamic JavaScript Features!</h1>
+    <div class="button-group">
+        <button id="modifyTextBtn">Modify Text</button>
+        <button id="switchImageBtn">Switch Image</button>
+        <button id="addItemBtn">Add List Item</button>
+        <button id="removeItemBtn">Remove Last Item</button>
+    </div>
+
+    <img id="dynamicImage" src="image1.jpeg" alt="Feature Image">
+    <ul id="itemList">
+        <li>Sample List Item</li>
+    </ul>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let textState = false; 
+
+            // Change title text and color on button click
+            document.getElementById('modifyTextBtn').addEventListener('click', function () {
+                const pageTitle = document.getElementById('page-title');
+                if (textState) {
+                    pageTitle.innerHTML = "Welcome to Interactive Learning!";
+                    pageTitle.style.color = '#444';
+                } else {
+                    pageTitle.innerHTML = "ONE PEICE";
+                    pageTitle.style.color = '#ff6348'; 
+                }
+                textState = !textState; 
+            });
+
+            // Cycle through image list on button click
+            let imageSources = ["image1.jpeg", "image2.jpeg", "image3.jpg"];
+            let currentIndex = 0;
+
+            document.getElementById('switchImageBtn').addEventListener('click', function () {
+                currentIndex = (currentIndex + 1) % imageSources.length;
+                document.getElementById('dynamicImage').src = imageSources[currentIndex];
+            });
+
+            // Add a new item to the list
+            document.getElementById('addItemBtn').addEventListener('click', function () {
+                let listItem = document.createElement('li');
+                let listItemText = document.createTextNode('Another List Item');
+                listItem.appendChild(listItemText);
+                document.getElementById('itemList').appendChild(listItem);
+            });
+
+            // Remove the last item from the list
+            document.getElementById('removeItemBtn').addEventListener('click', function () {
+                let itemList = document.getElementById('itemList');
+                if (itemList.lastChild) {
+                    itemList.removeChild(itemList.lastChild);
+                }
+            });
+
+            // jQuery to change button text and alt attribute
+            $(document).ready(function () {
+                $("#modifyTextBtn").click(function () {
+                    $(this).text("Text Updated!");
+                });
+
+                $("#dynamicImage").attr("alt", "Current Image Display");
+            });
+        });
+    </script>
+</body>
+
+</html>

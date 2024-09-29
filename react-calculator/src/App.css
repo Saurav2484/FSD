@@ -1,0 +1,64 @@
+.calculator {
+  width: 300px;
+  margin: 100px auto;
+  border: 2px solid #333;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f5f5f5;
+}
+
+.display {
+  height: 60px;
+  background-color: #333;
+  color: #fff;
+  font-size: 1.5rem;
+  text-align: right;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.result-block {
+  height: 40px; /* Keep this consistent */
+  background-color: #2196f3; /* Blue background */
+  color: white; /* Text color */
+  font-size: 1.2rem; /* Smaller font size */
+  text-align: right; /* Align text to the right */
+  padding: 10px; /* Padding for spacing */
+  border-radius: 10px; /* Rounded corners */
+  margin-bottom: 20px; /* Space below the result block */
+  overflow: hidden; /* Hide overflow text */
+  white-space: nowrap; /* Prevent text wrapping */
+  text-overflow: ellipsis; /* Show ellipsis for overflow text */
+  display: flex; /* Use flexbox */
+  align-items: center; /* Center items vertically */
+  justify-content: flex-end; /* Align items to the right */
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+}
+
+button {
+  font-size: 1.5rem;
+  padding: 20px;
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #1976d2;
+}
+
+button:active {
+  background-color: #0d47a1;
+}
+
+.span-two {
+  grid-column: span 2; /* Make the button span two columns */
+}
